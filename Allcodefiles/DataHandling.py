@@ -1,5 +1,5 @@
 import re
-
+from sklearn.model_selection import train_test_split
 def missing_values(data):
     """
     All columns might contain missing values we have to decide how to handle
@@ -57,6 +57,8 @@ def missing_values(data):
                 daata[i].fillna(0,inplace=True)
     return data
 
-def train_test_split(data):
 
-    return data
+def train_test(X,y):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.06, random_state=10)
+
+    return X_train, X_test, y_train, y_test
