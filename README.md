@@ -7,9 +7,9 @@ There are 17880 samples in the dataset in which 17014 are real job data and 866 
 This is a overall view of the files and functions used in both the pipelines in the project. Below I have attached both train and test pipelines separately.
 
 ## training pipeline
-
+![](images/Trainpipeline.jpg)
 ## testing pipeline
-
+![](images/Testpipeline.jpg)
 ## Files and Functions
 
 ## How to run and test

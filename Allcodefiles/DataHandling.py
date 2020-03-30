@@ -59,6 +59,21 @@ def missing_values(data):
 
 
 def train_test(X,y):
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.06, random_state=10)
+    '''
+    For the training data provided we might need to split into train, test
+    because we do not possess any test set to check. If we do possess something
+    to test then this function is not required.
+    '''
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y,
+                                            test_size = 0.06, random_state=10)
 
     return X_train, X_test, y_train, y_test
+
+
+def texthandling(data):
+        '''
+        This function is for hnadling text data columns company profile,
+        description, requirements, benefits are there is multiple text in those
+        columns we need to do something about them.
+        '''
