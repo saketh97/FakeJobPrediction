@@ -1,28 +1,33 @@
 import re
+import string
 from sklearn.model_selection import train_test_split
+
 def missing_values(data):
     """
     All columns might contain missing values we have to decide how to handle
     each column. Some columns need to handled seperately.
     """
 
-    """1.location"""
+    """
+    1.location
 
-    data['location'].fillna('No Info',inplace=True)
+    a second level of handling is done as of to remove numeric valus in the
+    location data. regex is used to remove those numeric data and replace with
+    no info.
+    """
+
+    data['location'].fillna('no info',inplace=True)
     withoutcomma = data[~data['location'].str.contains(",")].index
     withcomma = data[data['location'].str.contains(",")].index
 
     for i in withcomma:
-        data.loc[i,'country']=data.loc[i,'location'].split(',')[0]
-        data.loc[i,'province']=data.loc[i,'location'].split(',')[1]
-        data.loc[i,'city']=data.loc[i,'location'].split(',')[2]
+        data.loc[i,'country']=data.loc[i,'location'].split(',')[0].strip()
+        data.loc[i,'province']=data.loc[i,'location'].split(',')[1].strip()
+        data.loc[i,'city']=data.loc[i,'location'].split(',')[2].strip()
+        data.loc[i,'province'] = re.sub('^[0-9 ]*$','no info',data.loc[i,'province'])
+        data.loc[i,'city'] = re.sub('^[0-9 ]*$','no info',data.loc[i,'city'])
     for i in withoutcomma:
-        data.loc[i,'country']=data.loc[i,'location']
-
-    data['province'].fillna('No Info',inplace=True)
-    data['city'].fillna('No Info',inplace=True)
-    data['province'].replace(' ','No Info',inplace=True)
-    data['city'].replace(' ','No Info',inplace=True)
+        data.loc[i,'country']=data.loc[i,'location'].strip()
 
     data.drop(['location'],axis=1,inplace=True)
 
@@ -52,9 +57,11 @@ def missing_values(data):
     for i in columns:
         if(data[i].isna().any()):
             if(data[i].dtypes == 'object'):
-                data[i].fillna('No Info',inplace=True)
+                data[i].fillna('no info',inplace=True)
+                data[i] = data[i].str.lower()
+
             else:
-                daata[i].fillna(0,inplace=True)
+                data[i].fillna(0,inplace=True)
     return data
 
 
@@ -77,3 +84,31 @@ def texthandling(data):
         description, requirements, benefits are there is multiple text in those
         columns we need to do something about them.
         '''
+        ## company_profile, description, requirements, benifits
+        '''
+        1. removing punctuations, 2. removing numbered words, 3. removing unknown characters
+        '''
+        for i in range(0,data.shape[0]):
+
+            data.loc[i,'company_profile'] = re.sub('[%s]'%re.escape(string.punctuation),'',str(data.loc[i,'company_profile']))
+            data.loc[i,'description'] = re.sub('[%s]'%re.escape(string.punctuation),'',str(data.loc[i,'description']))
+            data.loc[i,'requirements'] = re.sub('[%s]'%re.escape(string.punctuation),'',str(data.loc[i,'requirements']))
+            data.loc[i,'benefits'] = re.sub('[%s]'%re.escape(string.punctuation),'',str(data.loc[i,'benefits']))
+
+
+        for i in range(0,data.shape[0]):
+
+            data.loc[i,'company_profile'] = re.sub('\w*\d\w*', '',str(data.loc[i,'company_profile']))
+            data.loc[i,'description'] = re.sub('\w*\d\w*', '',str(data.loc[i,'description']))
+            data.loc[i,'requirements'] = re.sub('\w*\d\w*', '',str(data.loc[i,'requirements']))
+            data.loc[i,'benefits'] = re.sub('\w*\d\w*', '',str(data.loc[i,'benefits']))
+
+        for i in range(0,data.shape[0]):
+
+            data.loc[i,'company_profile'] = re.sub('[^a-z ]+', ' ',str(data.loc[i,'company_profile']))
+            data.loc[i,'description'] = re.sub('[^a-z ]+', ' ',str(data.loc[i,'description']))
+            data.loc[i,'requirements'] = re.sub('[^a-z ]+', ' ',str(data.loc[i,'requirements']))
+            data.loc[i,'benefits'] = re.sub('[^a-z ]+', ' ',str(data.loc[i,'benefits']))
+
+        print(data.info())
+        return data

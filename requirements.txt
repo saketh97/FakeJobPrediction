@@ -1,4 +1,5 @@
 joblib==0.14.1
+nltk==3.4.5
 numpy==1.18.2
 pandas==1.0.3
 python-dateutil==2.8.1

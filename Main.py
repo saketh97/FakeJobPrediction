@@ -12,11 +12,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
     var_args = vars(args)
 
-try:
+#try:
     if(var_args['return_object'] == 'train'):
         training()
     else:
         testing()
 
-except Exception as e:
-    handle(e)
+##    handle(e)
