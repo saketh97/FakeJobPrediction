@@ -1,4 +1,5 @@
 import pandas as pd
+from Allcodefiles.Exceptionhandling import handle
 
 def read_csv(path):
     try:
@@ -7,6 +8,5 @@ def read_csv(path):
         else:
             print("The files is not a CSV file")
     except Exception as e:
-        print('error raised while reading')
-        raise Exception(e)
+        handle('file reading')
     return data

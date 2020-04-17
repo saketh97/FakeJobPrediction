@@ -19,4 +19,4 @@ try:
         testing()
 
 except Exception as e:
-    handle(e)
+    handle('Main file')
