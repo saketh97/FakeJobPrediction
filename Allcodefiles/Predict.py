@@ -32,17 +32,15 @@ def score_and_save(y_pred):
 
         y_test = data['fraudulent']
         cm = confusion_matrix(y_test, y_pred)
-        print('                                    '+"SCORES"+'                                       ')
-        print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-        print("                                confusion matrix                                    ")
+        print("\n"+"SCORES")
+        print("confusion matrix")
         print(cm)
-        print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-        print('+              '+'F1-Score '+'= '+str(round(f1_score(y_test, y_pred),4))+'               '+'Precision '+'= '+str(round(precision_score(y_test, y_pred),4))+"                 +")
-        print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-        print('+              '+'Recall '+'= '+str(round(recall_score(y_test, y_pred),4))+'                 '+'Accuracy '+'= '+str(round(accuracy_score(y_test,y_pred),4))+'                  +')
-        print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+        print('F1-Score'+' = '+str(round(f1_score(y_test, y_pred),4)))
+        print('Precision'+' = '+str(round(precision_score(y_test, y_pred),4)))
+        print('Recall'+' = '+str(round(recall_score(y_test, y_pred),4)))
+        print('Accuracy'+' = '+str(round(accuracy_score(y_test,y_pred),4)))
 
-        data['fraud_prediction']  = y_pred
+        data['fraud_prediction'] = y_pred
 
         data.to_csv('predictionoutput/testsetprediction.csv')
     except Exception as e:

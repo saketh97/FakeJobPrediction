@@ -2,3 +2,9 @@ from .training import training
 from .testing import testing
 from .Dataread import read_csv
 from .Exceptionhandling import handle
+from .Predict import load_model_predict
+from .Predict import score_and_save
+from .DataHandling import missing_values
+from .DataHandling import texthandling
+from .DataHandling import categorical_cols_train
+from .DataHandling import categorical_cols_test
