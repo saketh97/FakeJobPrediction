@@ -19,5 +19,9 @@ Similar to training we need to read the data using Data Read file and then handl
 ## Files and Functions
 
 ## How to run and test
-
+### Train
+![](images/Train1.jpg)
+![](images/Train2.jpg)
+### Test
+![](images/Test.jpg)
 ## libraries used
