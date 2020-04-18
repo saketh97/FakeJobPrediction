@@ -24,5 +24,5 @@ Similar to training we need to read the data using Data Read file and then handl
 or
 ![](images/Train2.JPG)
 ### Test
-![](images/Test.jpg)
+![](images/Test.JPG)
 ## libraries used
