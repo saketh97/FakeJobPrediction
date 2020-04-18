@@ -20,8 +20,8 @@ Similar to training we need to read the data using Data Read file and then handl
 
 ## How to run and test
 ### Train
-![](images/Train1.jpg)
-![](images/Train2.jpg)
+![](images/Train1.JPG)
+![](images/Train2.JPG)
 ### Test
-![](images/Test.jpg)
+![](images/Test.JPG)
 ## libraries used
