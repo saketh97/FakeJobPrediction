@@ -32,4 +32,7 @@ By default the code takes training as the process to perform. You can also speci
 Just specify **-r test** so that the testing pipeline starts. If it is not specified then default training pipeline will initiate.
 ## Libraries used
 
-* [Pandas](https://pandas.pydata.org/docs/getting_started/index.html)         [NLTK](https://www.nltk.org/)           [pickle](https://docs.python.org/2/library/pickle.html)         [Sklearn](https://scikit-learn.org/stable/)
+* [Pandas](https://pandas.pydata.org/docs/getting_started/index.html)         
+* [NLTK](https://www.nltk.org/)           
+* [pickle](https://docs.python.org/2/library/pickle.html)         
+* [Sklearn](https://scikit-learn.org/stable/)
