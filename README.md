@@ -2,17 +2,17 @@
 This project is based on the dataset from [Fake job prediction kaggle dataset](https://www.kaggle.com/shivamb/real-or-fake-fake-jobposting-prediction). In this project the task is to predict the fake job postings. There are 18 columns like title, department, company profile, job description etc. I will use NLP Techniques to analyse text data and prepare them for prediction model to train. Also this complete project uses pipeline concept automating the train and test process. Once the training is complete the model will be saved as a pickle file to load whenever we need to predict.
 
 There are 17880 samples in the dataset in which 17014 are real job data and 866 are fake job data. The data is biased towards real job data so the main parameters used to rate prediction is not just **accuracy** but **F1-score, Precision and recall** as well. Before starting the whole coding process I have split the data into two datasets **Train with 97% split** and **Test with 3% split**. For the model I have used Random Forest Classifier which at the end has achieved **F1-score 0.80** and **Precision of 94.4%** with accuracy around **98%**.
-## Pipeline overview
+## Pipeline Overview
 ![](images/mainpipelineimage.jpg)
 This is a overall view of the files and functionalities used in both the pipelines in the project. Below I have attached both train and test pipelines separately.
-## training pipeline
+## Training Pipeline
 ![](images/Trainingpipeline.jpg)
 The training process contains 3 major steps
 1. Data Reading
 2. Data Handling
 3. Model
 First we read the data using Data Read file and then pass it to Data handling file where the missing values, Text data Handling takes place and finally categorical encoding is done for category columns. After Handling the data and scaling then we will utilize Random Forest algorithm to create and train model on the cleaned data. After training the model then we save the model as a pickle file so it can be loaded any time.  
-## testing pipeline
+## Testing Pipeline
 ![](images/Testingpipeline.jpg)
 Similar to training we need to read the data using Data Read file and then handle the data(missing values, Text data Handling, categorical encoding). After Handling the data and scaling them we will make use of the saved model to test the data and save the predicted result as a csv. Here for testing process we use the saved categorical encoder and saved scaler instead of newly creating. Also in the end it will display the metrics used for rating.
 ## NLP Text Handling
@@ -26,7 +26,7 @@ By default the code takes training as the process to perform. You can also speci
 ### Test
 ![](images/Test.JPG)
 Just specify **-r test** so that the testing pipeline starts. If it is not specified then default training pipeline will initiate.
-## libraries used
+## Libraries used
 1. [Pandas](https://pandas.pydata.org/docs/getting_started/index.html)
 2. [NLTK](https://www.nltk.org/)
 3. [pickle](https://docs.python.org/2/library/pickle.html)
