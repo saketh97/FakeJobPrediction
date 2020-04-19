@@ -9,8 +9,8 @@ This is a overall view of the files and functionalities used in both the pipelin
 ![](images/Trainingpipeline.jpg)
 The training process contains 3 major steps
 1. Data Reading
-2. Data Handling
-3. Model
+1. Data Handling
+1. Model
 
 First we read the data using Data Read file and then pass it to Data handling file where the missing values, Text data Handling takes place and finally categorical encoding is done for category columns. After Handling the data and scaling then we will utilize Random Forest algorithm to create and train model on the cleaned data. After training the model then we save the model as a pickle file so it can be loaded any time.  
 ## Testing Pipeline
@@ -31,7 +31,8 @@ By default the code takes training as the process to perform. You can also speci
 
 Just specify **-r test** so that the testing pipeline starts. If it is not specified then default training pipeline will initiate.
 ## Libraries used
-1. [Pandas](https://pandas.pydata.org/docs/getting_started/index.html)
-2. [NLTK](https://www.nltk.org/)
-3. [pickle](https://docs.python.org/2/library/pickle.html)
-4. [Sklearn](https://scikit-learn.org/stable/)
+
+* [Pandas](https://pandas.pydata.org/docs/getting_started/index.html)
+* [NLTK](https://www.nltk.org/)
+* [pickle](https://docs.python.org/2/library/pickle.html)
+* [Sklearn](https://scikit-learn.org/stable/)
