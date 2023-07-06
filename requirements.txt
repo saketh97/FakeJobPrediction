@@ -1,5 +1,5 @@
 category-encoders==2.1.0
-joblib==0.14.1
+joblib==1.2.0
 nltk==3.4.5
 numpy==1.18.2
 pandas==1.0.3
